@@ -33,7 +33,7 @@ def choose_social_network(call):
 
         link = message.text
         ydlopts = {
-            'outtmpl': '%(id)s.%(ext)s',
+            'format': 'mp4',
         }
         with yt_dlp.YoutubeDL(ydlopts) as ydl:
             video = ydl.extract_info(
