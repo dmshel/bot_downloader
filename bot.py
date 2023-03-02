@@ -42,7 +42,7 @@ def choose_social_network(call):
             )
         videoname = video['title']
         ydl.download([link])
-        filename = ydl.preparefilename(video)
+        filename = ydl.prepare_filename(video)
 
         bot.send_document(message.chat.id, open(filename, 'rb'),
             caption='Here is your video: {}'.format(videoname))
