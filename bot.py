@@ -21,7 +21,7 @@ def start_message(message):
 
 def choose_social_network(call):
   if call.data == 'INS':
-        bot.send_message(call.message.chat.id, 'Пока не Работает:(')
+        bot.send_message(call.message.chat.id, '❌Пока не Работает🤦‍♂️😢')
 
   elif call.data == 'YT':
       bot.send_message(call.message.chat.id, '👋 Пришлите ссылку на YouTube видео и я его скачаю для вас ❤️‍🔥')
@@ -32,7 +32,7 @@ def choose_social_network(call):
       def YOUTUBE_DOWNLOADER(message):
 
         link = message.text
-       bot.send_message(message.chat.id, 'Попробую  это скачать...😉')
+       bot.send_message(message.chat.id, 'Попробую  это скачать...⌛😉')
         ydlopts = {
             'format': 'mp4',
         }
