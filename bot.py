@@ -45,7 +45,7 @@ def choose_social_network(call):
         filename = ydl.prepare_filename(video)
 
         bot.send_document(message.chat.id, open(filename, 'rb'),
-            caption='Here is your video: {}'.format(videoname))
+            caption='Вот Ваше видео: {}'.format(videoname))
 
         os.remove(filename)
 
