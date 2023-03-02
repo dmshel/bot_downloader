@@ -32,6 +32,7 @@ def choose_social_network(call):
       def YOUTUBE_DOWNLOADER(message):
 
         link = message.text
+       bot.send_message(message.chat.id, 'Попробую  это скачать...😉')
         ydlopts = {
             'format': 'mp4',
         }
@@ -45,7 +46,7 @@ def choose_social_network(call):
         filename = ydl.prepare_filename(video)
 
         bot.send_document(message.chat.id, open(filename, 'rb'),
-            caption='Вот Ваше видео: {}'.format(videoname))
+            caption='✔Вот Ваше видео: {}'.format(videoname))
 
         os.remove(filename)
 
