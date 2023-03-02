@@ -1,11 +1,11 @@
 from telebot import *
 from buttons import *
 import os
-import youtube_dl
+#import youtube_dl
+import yt_dlp
 
 
-
-TOKEN = 'Ur TOKEN'
+TOKEN = 'add ur token'
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -35,7 +35,7 @@ def choose_social_network(call):
         ydlopts = {
             'outtmpl': '%(id)s.%(ext)s',
         }
-        with youtube_dl.YoutubeDL(ydlopts) as ydl:
+        with yt_dlp.YoutubeDL(ydlopts) as ydl:
             video = ydl.extract_info(
                 link,
                 download=False
@@ -50,4 +50,3 @@ def choose_social_network(call):
         os.remove(filename)
 
 bot.infinity_polling()
-
