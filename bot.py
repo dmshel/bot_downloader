@@ -1,11 +1,10 @@
 from telebot import *
 from buttons import *
 import os
-#import youtube_dl
 import yt_dlp
 from yt_dlp import YoutubeDL
 
-TOKEN = 'add ur token'
+TOKEN = ''
 
 bot = telebot.TeleBot(TOKEN)
 
