@@ -1,22 +1,11 @@
-# Author code: mython-dev or myth-dev
-# Instagram: @mython_dev or h4ckerworld
-# Telegram: @myth_dev
-# GitHub: https://github.com/mython_dev
-
-# Да есть Баги.... :(
-
-
-
 from telebot import *
-import pytube
 from buttons import *
 import os
-import random
-import time
+import youtube_dl
 
 
 
-TOKEN = '# Add your TOKEN:)'
+TOKEN = 'Ur TOKEN'
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -43,39 +32,22 @@ def choose_social_network(call):
       def YOUTUBE_DOWNLOADER(message):
 
         link = message.text
- 
-        yt = pytube.YouTube(link)
+        ydlopts = {
+            'outtmpl': '%(id)s.%(ext)s',
+        }
+        with youtube_dl.YoutubeDL(ydlopts) as ydl:
+            video = ydl.extract_info(
+                link,
+                download=False
+            )
+        videoname = video['title']
+        ydl.download([link])
+        filename = ydl.preparefilename(video)
 
-  
-        bot.send_message(message.chat.id, 'Попробую  это скачать...')
+        bot.senddocument(message.chat.id, open(filename, 'rb'),
+            caption='Here is your video: {}'.format(videoname))
 
-        
-        file = yt.streams.filter(progressive=True, file_extension="mp4")
+        os.remove(filename)
 
-        file.get_highest_resolution().download()
-
-           
-        finally_name = ''.join((random.choice('qwertyuiopasdfghjklzxcvbnm')for i in range(6)))
-
-        os.rename(file, finally_name)
-
-        video = open(finally_name, 'rb')
-
-
-        bot.reply_to(message, 'Отправляю.... Ждите')
-
-        
-        bot.send_video(message.chat.id, video, caption='Cкачано с помощью @myth_downloader_ytbot')
-
-        time.sleep(5)
-
-        os.remove(finally_name)
-
-# @bot.message_handler(content_types=['text'])
-
-
-# def get_text_messages(message):
-
-#    bot.send_message(message.chat.id, 'test')
-           
 bot.infinity_polling()
+
