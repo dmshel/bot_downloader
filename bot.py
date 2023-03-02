@@ -3,7 +3,7 @@ from buttons import *
 import os
 #import youtube_dl
 import yt_dlp
-
+from yt_dlp import YoutubeDL
 
 TOKEN = 'add ur token'
 
@@ -44,7 +44,7 @@ def choose_social_network(call):
         ydl.download([link])
         filename = ydl.preparefilename(video)
 
-        bot.senddocument(message.chat.id, open(filename, 'rb'),
+        bot.send_document(message.chat.id, open(filename, 'rb'),
             caption='Here is your video: {}'.format(videoname))
 
         os.remove(filename)
