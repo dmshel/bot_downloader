@@ -32,7 +32,9 @@ def choose_social_network(call):
       def YOUTUBE_DOWNLOADER(message):
 
         link = message.text
-       bot.send_message(message.chat.id, 'Попробую  это скачать...⌛😉')
+        bot.send_message(message.chat.id, 'Попробую  это скачать...⌛😉')
+        time.sleep(3)
+        bot.reply_to(message, 'Отправляю.... Ждите🎁')
         ydlopts = {
             'format': 'mp4',
         }
