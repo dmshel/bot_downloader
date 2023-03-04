@@ -8,7 +8,6 @@ TOKEN = ''
 
 bot = telebot.TeleBot(TOKEN)
 
-
 @bot.message_handler(commands=['start'])
 
 def start_message(message):
@@ -35,7 +34,7 @@ def choose_social_network(call):
         time.sleep(3)
         bot.reply_to(message, 'Отправляю.... Ждите🎁')
         ydlopts = {
-            'format': 'mp4',
+            'format': 'bestvideo[ext=mp4]',
         }
         with yt_dlp.YoutubeDL(ydlopts) as ydl:
             video = ydl.extract_info(
