@@ -34,7 +34,7 @@ def choose_social_network(call):
         time.sleep(3)
         bot.reply_to(message, 'Отправляю.... Ждите🎁')
         ydlopts = {
-            'format': 'bestvideo[ext=mp4]',
+            'format': 'bestvideo[ext=mp4]', 'cookiefile': '~/bot_downloader/all_cookies.txt',
         }
         with yt_dlp.YoutubeDL(ydlopts) as ydl:
             video = ydl.extract_info(
