@@ -13,8 +13,6 @@ bot = telebot.TeleBot(TOKEN)
 def start_message(message):
   bot.send_message(message.chat.id,"Выберите от куда вы хотите скачать видео.", reply_markup = social_network)
 
-
-
 @bot.callback_query_handler(func=lambda call: True)
 
 def choose_social_network(call):
@@ -34,7 +32,7 @@ def choose_social_network(call):
         time.sleep(3)
         bot.reply_to(message, 'Отправляю.... Ждите🎁')
         ydlopts = {
-            'format': 'bestvideo[ext=mp4]',
+            'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
         }
         with yt_dlp.YoutubeDL(ydlopts) as ydl:
             video = ydl.extract_info(
